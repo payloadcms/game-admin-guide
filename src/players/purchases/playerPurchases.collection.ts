@@ -39,9 +39,11 @@ export const playerPurchases: CollectionConfig = {
       required: true,
     },
     {
-      name: 'amount',
+      name: 'price',
       type: 'number',
       admin: {
+        readOnly: true,
+        position: 'sidebar',
         description: 'Should be entered as cents, for example $1 will be entered as 100',
       },
     },
