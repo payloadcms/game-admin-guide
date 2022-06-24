@@ -1,11 +1,16 @@
 import { CollectionBeforeChangeHook } from 'payload/types'
 import { stripe } from '../../shared/stripe'
+import { APIError } from 'payload/errors'
 
 export const playerPurchaseHook: CollectionBeforeChangeHook = async ({ req, data }) => {
-
   if (req.user.collection === 'admin') {
     return
   }
+
+  if (!req.body.stripeToken) {
+    throw new APIError('Could not complete transaction, missing payment', 400);
+  }
+
   // get the amount from the IAP item
   const result = await req.payload.find({
     collection: 'purchases',

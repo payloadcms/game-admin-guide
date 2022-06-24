@@ -56,7 +56,7 @@ dist
 build
 
 # uploaded files
-/media
+media
 
 # mac ds files
 .DS_Store

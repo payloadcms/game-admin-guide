@@ -4,13 +4,8 @@ import { gamesAfterChangeHook } from './gamesAfterChangeHook'
 
 export const games: CollectionConfig = {
   slug: 'games',
-  admin: {
-    useAsTitle: 'name',
-  },
   hooks: {
-    afterChange: [
-      gamesAfterChangeHook,
-    ],
+    afterChange: [ gamesAfterChangeHook ],
   },
   access: {
     update: () => false,

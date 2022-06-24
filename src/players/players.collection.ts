@@ -1,6 +1,7 @@
 import { CollectionConfig } from 'payload/types'
 import { adminOnly } from '../shared/access/fields/adminOnly'
 import { playerHook } from './playerHook'
+import { playerLoginHook } from './playerLoginHook'
 import { adminOrSelf } from '../shared/access/fields/adminOrSelf'
 
 export const players: CollectionConfig = {
@@ -10,9 +11,8 @@ export const players: CollectionConfig = {
     useAsTitle: 'handle',
   },
   hooks: {
-    beforeValidate: [
-      playerHook,
-    ]
+    afterLogin: [ playerLoginHook ],
+    beforeValidate: [ playerHook ]
   },
   fields: [
     {
@@ -31,6 +31,7 @@ export const players: CollectionConfig = {
       access: {
         read: adminOrSelf,
         update: adminOnly,
+        create: () => true,
       },
     },
     {
@@ -39,10 +40,6 @@ export const players: CollectionConfig = {
       type: 'checkbox',
       admin: {
         position: 'sidebar',
-      },
-      access: {
-        read: adminOrSelf,
-        update: adminOnly,
       },
     },
     {
