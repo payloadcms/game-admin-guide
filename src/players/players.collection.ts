@@ -7,7 +7,7 @@ export const players: CollectionConfig = {
   slug: 'players',
   auth: true,
   admin: {
-    useAsTitle: 'name',
+    useAsTitle: 'handle',
   },
   hooks: {
     beforeValidate: [
@@ -19,6 +19,7 @@ export const players: CollectionConfig = {
       name: 'handle',
       type: 'text',
       required: true,
+      unique: true,
     },
     {
       name: 'name',
