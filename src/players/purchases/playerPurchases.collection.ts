@@ -41,6 +41,9 @@ export const playerPurchases: CollectionConfig = {
     {
       name: 'amount',
       type: 'number',
+      admin: {
+        description: 'Should be entered as cents, for example $1 will be entered as 100',
+      },
     },
     {
       name: 'charge',
