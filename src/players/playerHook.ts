@@ -1,10 +1,6 @@
 import { BeforeValidateHook } from 'payload/dist/collections/config/types'
-
-import Stripe from 'stripe';
 import { isEmailTaken } from '../shared/isEmailTaken'
-
-const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY || '';
-const stripe = new Stripe(STRIPE_SECRET_KEY, { apiVersion: '2020-08-27' });
+import { stripe } from '../shared/stripe'
 
 export const playerHook: BeforeValidateHook = async ({operation, data, originalDoc}) => {
   if (operation === 'create' && data.email) {

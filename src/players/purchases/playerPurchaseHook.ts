@@ -1,8 +1,5 @@
 import { CollectionBeforeChangeHook } from 'payload/types'
-import Stripe from 'stripe';
-
-const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY || '';
-const stripe = new Stripe(STRIPE_SECRET_KEY, { apiVersion: '2020-08-27' });
+import { stripe } from '../../shared/stripe'
 
 export const playerPurchaseHook: CollectionBeforeChangeHook = async ({ req, data }) => {
 
