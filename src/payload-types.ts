@@ -15,6 +15,9 @@ export interface Admin {
   email?: string;
   resetPasswordToken?: string;
   resetPasswordExpiration?: string;
+  enableAPIKey?: boolean;
+  apiKey?: string;
+  apiKeyIndex?: string;
   loginAttempts?: number;
   lockUntil?: string;
   createdAt: string;
@@ -31,8 +34,10 @@ export interface Player {
   resetPasswordExpiration?: string;
   loginAttempts?: number;
   lockUntil?: string;
+  handle: string;
   name: string;
   banned?: boolean;
+  customer?: string;
   achievements?: (string | Achievement)[];
   stats?: {
     experience: number;
@@ -89,12 +94,12 @@ export interface Image {
 export interface Game {
   id: string;
   teams: {
+    score: number;
     players?: {
       player: string | Player;
       score: number;
       id?: string;
     }[];
-    score: number;
     id?: string;
   }[];
   createdAt: string;
@@ -104,7 +109,7 @@ export interface Game {
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "purchases".
  */
-export interface Purchase {
+export interface Purchasable {
   id: string;
   name: string;
   description?: string;
@@ -120,9 +125,10 @@ export interface Purchase {
  */
 export interface PlayerPurchase {
   id: string;
-  purchase: string | Purchase;
+  purchase: string | Purchasable;
   players: string | Player;
   price?: number;
+  charge?: string;
   createdAt: string;
   updatedAt: string;
 }
