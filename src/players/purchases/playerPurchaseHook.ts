@@ -26,7 +26,7 @@ export const playerPurchaseHook: CollectionBeforeChangeHook = async ({ req, data
 
   // `source` is obtained with Stripe.js; see https://stripe.com/docs/payments/accept-a-payment-charges#web-create-token
   const charge = await stripe.charges.create({
-    amount: purchase.price * 100,
+    amount: purchase.price,
     currency: 'usd',
     customer: req.user.customer as string,
     capture: true,

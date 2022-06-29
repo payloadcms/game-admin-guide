@@ -19,6 +19,11 @@ export const games: CollectionConfig = {
       required: true,
       fields: [
         {
+          name: 'score',
+          type: 'number',
+          required: true,
+        },
+        {
           name: 'players',
           type: 'array',
           fields: [
@@ -34,11 +39,6 @@ export const games: CollectionConfig = {
               required: true,
             },
           ],
-        },
-        {
-          name: 'score',
-          type: 'number',
-          required: true,
         },
       ],
     },
